@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css')}}">
+    <title>Todo</title>
+</head>
+<body>
+    <h1 class="title">Todo List</h1>
+
+    <form class="form" action="/add" method="post">
+        <input class="form-input" type="text" name="task" placeholder="enter todo">
+        <button class="btn btn-add" type="submit">Add</button>
+    </form>
+
+    <ul>
+        {% for todo in todos %}
+        <li class="todo-items">
+            <input class="checkbox" type="checkbox">
+            <dev class="todos">{{ todo[1] }}</dev>
+            <button class="btn btn-delete" type="button" onclick="location.href='/delete/{{ todo[0] }}'">Delete</button>
+        </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
